@@ -1,11 +1,11 @@
 using System.Web.Http;
 using WebActivatorEx;
-using APIAuthentication;
+using ScoopenAPI;
 using Swashbuckle.Application;
 
 [assembly: PreApplicationStartMethod(typeof(SwaggerConfig), "Register")]
 
-namespace APIAuthentication
+namespace ScoopenAPI
 {
     public class SwaggerConfig
     {
