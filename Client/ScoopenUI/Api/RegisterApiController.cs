@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using RegistrationAndLogin.Service_References.Account;
 using ScoopenModals.Account;
 using ScoopenAPIModals.Notifications;
-
+using RegistrationAndLogin;
 namespace RegistrationAndLogin.Api
 {
     public class RegisterApiController : System.Web.Http.ApiController
