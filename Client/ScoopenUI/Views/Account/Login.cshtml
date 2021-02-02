@@ -8,53 +8,181 @@
 
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-</head>
-<body>
-    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
-    <script src="~/Scripts/jquery.validate.min.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>College Interview Process </title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
-    
-        <fieldset>
-            <legend>LoginRequest</legend>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Username)
-            </div>
-            <div class="editor-field">
-                @Html.EditorFor(model => model.Username)
-                @Html.ValidationMessageFor(model => model.Username)
-            </div>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
-            <div class="editor-label">
-                @Html.LabelFor(model => model.Password)
-            </div>
-            <div class="editor-field">
-                @Html.PasswordFor(model => model.Password)
-                @Html.ValidationMessageFor(model => model.Password)
-            </div>
-
-            <p>
-                <input type="submit" value="Log In" />
-            </p>
-        </fieldset>
-        <div>
-            @Html.ActionLink("New user?", "Register")
-        </div>
-    }
-
-    <div>
-        @if (!string.IsNullOrEmpty(ViewBag.LoginError))
-        {
-            <h2>Error in login. Please check username and password</h2>
+    <style>
+        .jumbotron {
+            background-color: #f4511e;
+            color: #ffffff;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .column {
+            float: left;
+            width: 50%;
+            padding: 0 5px;
+        }
+
+
+        .row {
+            margin: 0 25px;
+            align-items: center;
+        }
+
+
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            /*box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);*/
+            padding: 50px 50px 50px 150px;
+            background-color: #f1f1f1;
+            background: #fff;
+        }
+
+        h2 {
+            text-align: center;
+            color: white;
+            padding-top: 100px;
+        }
+
+        #btnSub {
+            background-color: deeppink;
+            font-weight: normal;
+            line-height: 2;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            color: white;
+            width: 80px;
+            border: 1px solid thin;
+        }
+    </style>
+
+</head>
+
+<body style="background-color: #00BCD4;">
+    <h2><b>LOGIN</b></h2>
+    <div class="row" style="padding-left:420px;">
+        <div class="column">
+            <div class="card">
+
+                @using (Html.BeginForm())
+               {
+                    @Html.AntiForgeryToken()
+                    @Html.ValidationSummary(true)
+                }
+
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Username)
+                </div>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Username)
+                    @Html.ValidationMessageFor(model => model.Username)
+                </div>
+                <br />
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Password)
+                </div>
+                <div class="editor-field">
+                    @Html.PasswordFor(model => model.Password)
+                    @Html.ValidationMessageFor(model => model.Password)
+                </div>
+                <div>
+                    <br />
+                    <div>
+                        <input type="submit" id="btnSub" value="Log In" />
+                        <b>
+                            <span>
+                                @Html.ActionLink("New user?", "Register")
+                            </span>
+                        </b>
+                    </div>
+                </div>
+
+                <div>
+                    @if (!string.IsNullOrEmpty(ViewBag.LoginError))
+                             {
+                        <h2>Error in login. Please check username and password</h2>
+                    }
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
+
+@*<body>
+        <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+        <script src="~/Scripts/jquery.validate.min.js"></script>
+        <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+        }
+
+            <fieldset>
+                        <legend>LoginRequest</legend>
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Username)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Username)
+                            @Html.ValidationMessageFor(model => model.Username)
+                        </div>
+
+                        <div class="editor-label">
+                            @Html.LabelFor(model => model.Password)
+                        </div>
+                        <div class="editor-field">
+                            @Html.PasswordFor(model => model.Password)
+                            @Html.ValidationMessageFor(model => model.Password)
+                        </div>
+
+                        <p>
+                            <input type="submit" value="Log In" />
+                        </p>
+                    </fieldset>
+                    <div>
+                        @Html.ActionLink("New user?", "Register")
+                    </div>
+                }
+
+                <div>
+                    @if (!string.IsNullOrEmpty(ViewBag.LoginError))
+                    {
+                        <h2>Error in login. Please check username and password</h2>
+                    }
+
+                </div>
+    </body>
+    </html>*@
+
+<!-- #Login -->
